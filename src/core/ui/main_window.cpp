@@ -11,7 +11,10 @@ MainWindow::MainWindow(int width, int height, QWidget* parent)
     sideBar_ = new SideBar(centralWidget_);
     centralWidget_->addWidget(sideBar_, 1);
 
-    dataView_ = new DataView(createPalette(Qt::white), centralWidget_);
+    Qt::ColorScheme systemColorScheme = qApp->styleHints()->colorScheme();
+    QColor dataViewColor = (systemColorScheme == Qt::ColorScheme::Dark) ? QColor(220, 224, 227) : Qt::white;
+
+    dataView_ = new DataView(createPalette(dataViewColor), centralWidget_);
     centralWidget_->addWidget(dataView_, 5);
 }
 
