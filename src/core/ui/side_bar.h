@@ -1,11 +1,12 @@
 #pragma once
 
 class SideBar : public QWidget {
+
+    Q_OBJECT
+
 public:
     SideBar(QWidget* parent = nullptr);
     ~SideBar();
-
-
 
     int getDataPointsCnt() const;
     int getClassesCnt() const;
@@ -31,5 +32,11 @@ private:
     const int spacerHeight_ = 40;
     const int buttonsMaxHeight_ = 40;
     const int buttonsMaxWidth_ = 90;
+
+private slots:
+    void handleClusterButtonClick();
+
+signals:
+    void clusterButtonClicked();
 };
 

@@ -9,6 +9,7 @@ MainWindow::MainWindow(int width, int height, QWidget* parent)
     this->setCentralWidget(centralWidget_);
 
     sideBar_ = new SideBar(centralWidget_);
+    sideBar_->connect(sideBar_, &SideBar::clusterButtonClicked, this, &MainWindow::cluster);
     centralWidget_->addWidget(sideBar_, 1);
 
     Qt::ColorScheme systemColorScheme = qApp->styleHints()->colorScheme();
@@ -16,6 +17,9 @@ MainWindow::MainWindow(int width, int height, QWidget* parent)
 
     dataView_ = new DataView(createPalette(dataViewColor), centralWidget_);
     centralWidget_->addWidget(dataView_, 5);
+
+    kmeans_ = std::make_unique<Kmeans>(dataView_->getWidth(), dataView_->getHeight(),
+                                       sideBar_->getDataPointsCnt(), sideBar_->getClassesCnt());
 }
 
 MainWindow::~MainWindow()
@@ -31,4 +35,15 @@ QPalette MainWindow::createPalette(const QColor& backgroundColor)
     palette.setBrush(QPalette::Disabled, QPalette::Base, brush);
     palette.setBrush(QPalette::Disabled, QPalette::Window, brush);
     return palette;
+}
+
+void MainWindow::cluster()
+{
+    kmeans_->setXmax(dataView_->getWidth());
+    kmeans_->setYmax(dataView_->getHeight());
+    kmeans_->setPointsCnt(sideBar_->getDataPointsCnt());
+    kmeans_->setClustersCnt(sideBar_->getClassesCnt());
+    kmeans_->createRandomPoints();
+    kmeans_->createRandomClusters();
+    kmeans_->cluster();
 }

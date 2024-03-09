@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="clustering\data_point.cpp" />
     <ClCompile Include="clustering\data_cluster.cpp" />
+    <ClCompile Include="clustering\kmeans.cpp" />
     <ClCompile Include="ui\point.cpp" />
     <ClCompile Include="ui\data_view.cpp" />
     <ClCompile Include="ui\side_bar.cpp" />
@@ -132,9 +133,10 @@
   <ItemGroup>
     <ClInclude Include="clustering\data_point.h" />
     <ClInclude Include="clustering\data_cluster.h" />
+    <ClInclude Include="clustering\kmeans.h" />
     <ClInclude Include="ui\point.h" />
     <ClInclude Include="ui\data_view.h" />
-    <ClInclude Include="ui\side_bar.h" />
+    <QtMoc Include="ui\side_bar.h" />
     <ClInclude Include="ui\central_widget.h" />
     <QtMoc Include="ui\main_window.h" />
     <ClInclude Include="precompiled.h" />

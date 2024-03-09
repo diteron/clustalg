@@ -19,6 +19,7 @@ SideBar::SideBar(QWidget* parent) : QWidget(parent)
 
     clusterButton_ = createPushButton(this, "Cluster",
                                       buttonsMaxWidth_, buttonsMaxHeight_);
+    clusterButton_->connect(clusterButton_, &QPushButton::clicked, this, &SideBar::handleClusterButtonClick);
     layout_->addWidget(clusterButton_);
 
     spacer_ = new QSpacerItem(spacerWidth_, spacerHeight_, QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -54,4 +55,9 @@ QPushButton* SideBar::createPushButton(QWidget* parent, const char* buttonText,
     QPushButton* pushButton = new QPushButton(buttonText, parent);
     pushButton->setMaximumSize(QSize(maxWidth, maxHeight));
     return pushButton;
+}
+
+void SideBar::handleClusterButtonClick()
+{
+    emit clusterButtonClicked();
 }
