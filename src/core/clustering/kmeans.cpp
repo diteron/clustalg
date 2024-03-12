@@ -52,8 +52,8 @@ void Kmeans::createRandomClusters()
 
 void Kmeans::clearData()
 {
-    //xMax_ = 0;
-    //yMax_ = 0;
+    xMax_ = 0;
+    yMax_ = 0;
     pointsCnt_ = 0;
     clustersCnt_ = 0;
     points_.clear();
@@ -65,6 +65,7 @@ void Kmeans::cluster()
     unsigned int threadsCnt = std::thread::hardware_concurrency();
     unsigned int pointsPerThread = std::round(pointsCnt_ / threadsCnt);
 
+    isClustersChanged_ = true;
     while (isClustersChanged_.load()) {
         isClustersChanged_ = false;
 
@@ -93,7 +94,7 @@ void Kmeans::cluster()
     }
 }
 
-const std::vector<DataCluster>& Kmeans::getClusters() const
+std::vector<DataCluster>& Kmeans::getClusters()
 {
     return clusters_;
 }

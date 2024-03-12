@@ -19,7 +19,7 @@ public:
 
     void cluster();
 
-    const std::vector<DataCluster>& getClusters() const;
+    std::vector<DataCluster>& getClusters();
 
 private:
     void findClusterForPoints(int firsPointIdx, int lastPointIdx);

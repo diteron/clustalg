@@ -39,6 +39,7 @@ QPalette MainWindow::createPalette(const QColor& backgroundColor)
 
 void MainWindow::cluster()
 {
+    kmeans_->clearData();
     kmeans_->setXmax(dataView_->getWidth());
     kmeans_->setYmax(dataView_->getHeight());
     kmeans_->setPointsCnt(sideBar_->getDataPointsCnt());
@@ -46,4 +47,6 @@ void MainWindow::cluster()
     kmeans_->createRandomPoints();
     kmeans_->createRandomClusters();
     kmeans_->cluster();
+
+    dataView_->drawClusters(std::move(kmeans_->getClusters()));
 }
