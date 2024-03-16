@@ -9,7 +9,8 @@ public:
     ~SideBar();
 
     int getDataPointsCnt() const;
-    int getClassesCnt() const;
+    int getClustersCnt() const;
+    QString getClusteringAlgorithm() const;
 
 private:
     QSpinBox* createSpinBox(QWidget* parent, int maxWidth, int maxHeight,
@@ -19,10 +20,13 @@ private:
 
     QVBoxLayout* layout_ = nullptr;
 
+    QLabel* algorithmLabel_ = nullptr;
+    QComboBox* algorithmCombobox_ = nullptr;
+
     QLabel* dataPointsCntLabel_ = nullptr;
-    QLabel* classesCntLabel_ = nullptr;
+    QLabel* clustersCntLabel_ = nullptr;
     QSpinBox* dataPointsCntSpinbox_ = nullptr;
-    QSpinBox* classesCntSpinbox_ = nullptr;
+    QSpinBox* clustersCntSpinbox_ = nullptr;
     QPushButton* clusterButton_ = nullptr;
     QSpacerItem* spacer_ = nullptr;
 
@@ -35,6 +39,7 @@ private:
 
 private slots:
     void handleClusterButtonClick();
+    void algorithmChanged(const QString& text);
 
 signals:
     void clusterButtonClicked();

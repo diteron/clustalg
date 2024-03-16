@@ -1,6 +1,7 @@
 #pragma once
 
 #include <clustering/kmeans.h>
+#include <clustering/maximin.h>
 
 #include "central_widget.h"
 #include "side_bar.h"
@@ -22,6 +23,7 @@ private:
     DataView* dataView_ = nullptr;
     
     std::unique_ptr<Kmeans> kmeans_;
+    std::unique_ptr<Maximin> maximin_;
 
 public slots:
     void cluster();

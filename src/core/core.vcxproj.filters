@@ -56,6 +56,12 @@
     <ClCompile Include="clustering\kmeans.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="clustering\clustering_algo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="clustering\maximin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ui\kmeans_app.h">
@@ -80,6 +86,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="clustering\kmeans.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clustering\clustering_algo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clustering\maximin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

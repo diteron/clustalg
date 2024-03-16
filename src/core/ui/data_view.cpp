@@ -29,14 +29,15 @@ void DataView::paintEvent(QPaintEvent* event)
     QColor color;
     int hue = 0;
     int hueAdd = clusters_.size() > 0 ? static_cast<int>(360 / clusters_.size()) : 0;
-    color.setHsv(hue, 180, 180);
 
-    for (auto& cluster : clusters_) {
-        this->drawCentroid(painter, cluster.getCentroid(), color);
+    for (auto& cluster : clusters_) {        
+        color.setHsv(hue, 180, 180);
         this->drawPoints(painter, cluster.getPoints(), color);
         
+        color.setHsv(hue, 140, 100);
+        this->drawCentroid(painter, cluster.getCentroid(), color);
+
         hue += hueAdd;
-        color.setHsv(hue, 180, 180);
     }
 
     painter.end();
@@ -44,7 +45,7 @@ void DataView::paintEvent(QPaintEvent* event)
 
 void DataView::drawCentroid(QPainter& painter, DataPoint centroid, const QColor& color)
 {
-    QPen pen = QPen(QBrush(color), 12, Qt::SolidLine, Qt::RoundCap);
+    QPen pen = QPen(QBrush(color), 14, Qt::SolidLine, Qt::RoundCap);
     painter.setPen(pen);
     painter.drawPoint(centroid.getXpos(), centroid.getYpos());
 }
