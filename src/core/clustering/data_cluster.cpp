@@ -33,12 +33,11 @@ DataCluster::~DataCluster()
 
 void DataCluster::setRandomCentroid(int xmax, int ymax)
 {
-    static std::time_t seed = std::time(nullptr);
-    std::mt19937 randX(++seed);
-    std::mt19937 randY(++seed);
+    std::random_device rdseed;
+    std::mt19937 rand(rdseed());
 
-    int x = randX() % xmax;
-    int y = randY() % ymax;
+    int x = rand() % xmax;
+    int y = rand() % ymax;
     centroid_.setPos(x, y);
 }
 

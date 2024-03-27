@@ -1,7 +1,5 @@
 #include "precompiled.h"
 
-#include <random>
-
 #include "data_point.h"
 
 DataPoint::DataPoint()
@@ -28,17 +26,6 @@ void DataPoint::setXpos(int xpos)
 void DataPoint::setYpos(int ypos)
 {
     ypos_ = ypos;
-}
-
-void DataPoint::setRandomPos(int xmax, int ymax)
-{
-    static std::time_t seed = std::time(nullptr);
-    std::mt19937 randX(++seed);
-    std::mt19937 randY(++seed);
-    
-    int x = randX() % xmax;
-    int y = randY() % ymax;
-    this->setPos(x, y);
 }
 
 void DataPoint::setClusterIdx(int cidx)

@@ -10,7 +10,6 @@ public:
     void setPos(int xpos, int ypos);
     void setXpos(int xpos);
     void setYpos(int ypos);
-    void setRandomPos(int xmax, int ymax);
 
     void setClusterIdx(int cidx);
 

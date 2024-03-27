@@ -1,5 +1,7 @@
 #include "precompiled.h"
 
+#include <random>
+
 #include "clustering_algo.h"
 
 void ClusteringAlgo::setXmax(int xMax)
@@ -26,8 +28,13 @@ void ClusteringAlgo::setClustersCnt(int cnt)
 
 void ClusteringAlgo::createRandomPoints()
 {
+    std::random_device rdseed;
+    std::mt19937 rand(rdseed());
+
     for (int i = 0; i < pointsCnt_; ++i) {
-        points_[i].setRandomPos(xMax_, yMax_);
+        int x = rand() % xMax_;
+        int y = rand() % yMax_;
+        points_[i].setPos(x, y);
     }
 }
 
